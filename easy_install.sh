@@ -60,7 +60,7 @@ function install_svc() {
 function gen_keys() {
   echo "Generating validator keys..."
   echo "!! Make SURE to backup the mnemonic, without it you cannot withdraw your ETH !"
-  docker run --rm -ti --name eth2keys \
+  docker run --rm -ti --name eth2keys --net=none \
   -v eth2-keys:/mount \
   lidofinance/deposit-cli \
   new-mnemonic --folder /mount --mnemonic_language english --num_validators 1 --chain pyrmont
